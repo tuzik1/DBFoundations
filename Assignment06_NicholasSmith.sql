@@ -283,7 +283,7 @@ print
 	GO
 	CREATE VIEW vProductsbyCategories
 	AS
-		SELECT CategoryName, ProductName, UnitPrice
+		SELECT TOP 1000000 CategoryName, ProductName, UnitPrice
 		FROM dbo.vCategories AS C
 		JOIN dbo.vProducts AS P 
 		ON C.CategoryID = P.CategoryID;
@@ -312,7 +312,7 @@ print
 	GO
 	CREATE VIEW vInventoriesByProductsByDates
 	AS
-		SELECT ProductName, InventoryDate, Count
+		SELECT TOP 1000000 ProductName, InventoryDate, Count
 		FROM dbo.vProducts AS P
 		JOIN dbo.vInventories AS I
 		ON P.ProductID = I.ProductID
@@ -350,7 +350,7 @@ print
 	GO
 	CREATE VIEW vInventoriesByEmployeesByDates
 	AS
-		SELECT InventoryDate, CONCAT (EmployeeFirstName, ' ', EmployeeLastName) AS EmployeeName
+		SELECT TOP 1000000 InventoryDate, CONCAT (EmployeeFirstName, ' ', EmployeeLastName) AS EmployeeName
 		FROM dbo.vEmployees AS E
 		JOIN dbo.vInventories AS I
 		ON E.EmployeeID = I.EmployeeID
@@ -382,7 +382,7 @@ print
 	GO
 	CREATE VIEW vInventoriesByProductsByCategories
 	AS
-		SELECT CategoryName, ProductName, InventoryDate, Count
+		SELECT TOP 1000000 CategoryName, ProductName, InventoryDate, Count
 		FROM dbo.vCategories AS C
 		JOIN dbo.vProducts AS P
 		ON C.CategoryID = P.CategoryID
@@ -406,7 +406,7 @@ print
 	GO
 	CREATE VIEW vInventoriesByProductsByEmployees
 	AS
-		SELECT CategoryName, ProductName, InventoryDate, Count, CONCAT (EmployeeFirstName, ' ', EmployeeLastName) AS EmployeeName
+		SELECT TOP 1000000 CategoryName, ProductName, InventoryDate, Count, CONCAT (EmployeeFirstName, ' ', EmployeeLastName) AS EmployeeName
 		FROM dbo.vCategories AS C
 		JOIN dbo.vProducts AS P
 		ON C.CategoryID = P.CategoryID
@@ -431,7 +431,7 @@ print
 	GO
 	CREATE VIEW vInventoriesForChaiAndChangByEmployees
 	AS
-		SELECT CategoryName, ProductName, InventoryDate, Count, CONCAT (EmployeeFirstName, ' ', EmployeeLastName) AS EmployeeName
+		SELECT TOP 1000000 CategoryName, ProductName, InventoryDate, Count, CONCAT (EmployeeFirstName, ' ', EmployeeLastName) AS EmployeeName
 		FROM dbo.vCategories AS C
 		JOIN dbo.vProducts AS P
 		ON C.CategoryID = P.CategoryID
@@ -498,7 +498,7 @@ print
 	GO
 	CREATE VIEW vEmployeesByManager
 	AS
-		SELECT CONCAT (M.EmployeeFirstName, ' ', M.EmployeeLastName) AS Manager, CONCAT (E.EmployeeFirstName, ' ', E.EmployeeLastName) AS Employee
+		SELECT TOP 1000000 CONCAT (M.EmployeeFirstName, ' ', M.EmployeeLastName) AS Manager, CONCAT (E.EmployeeFirstName, ' ', E.EmployeeLastName) AS Employee
 		FROM dbo.vEmployees AS E
 		JOIN dbo.vEmployees AS M ON M.EmployeeID = E.ManagerID
 	GO
@@ -534,7 +534,7 @@ go
 	GO
 	CREATE VIEW vInventoriesByProductsByCategoriesByEmployees
 	AS
-		SELECT C.CategoryID
+		SELECT TOP 1000000 C.CategoryID
 			,CategoryName
 			,P.ProductID
 			,ProductName
